@@ -75,6 +75,17 @@ NSString * const kBEACON_UUID = @"6A484D3E-708F-4416-9BB9-0448CD02BA9C";
     }
 }
 
+- (void)locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region
+{
+    for (CLBeacon *beacon in beacons)
+    {
+        NSLog(@"Ranging beacon: %@", beacon.proximityUUID);
+        NSLog(@"%@ - %@", beacon.major, beacon.minor);
+        NSLog(@"Proximity: %@", [self stringForProximity:beacon.proximity]);
+        [self setColorForProximity:beacon.proximity];
+    }
+}
+
 - (NSString *)stringForProximity:(CLProximity)proximity {
     switch (proximity) {
         case CLProximityUnknown:    return @"Unknown";
@@ -108,17 +119,6 @@ NSString * const kBEACON_UUID = @"6A484D3E-708F-4416-9BB9-0448CD02BA9C";
 
         default:
             break;
-    }
-}
-
-- (void)locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region
-{
-    for (CLBeacon *beacon in beacons)
-    {
-        NSLog(@"Ranging beacon: %@", beacon.proximityUUID);
-        NSLog(@"%@ - %@", beacon.major, beacon.minor);
-        NSLog(@"Proximity: %@", [self stringForProximity:beacon.proximity]);
-        [self setColorForProximity:beacon.proximity];
     }
 }
 
