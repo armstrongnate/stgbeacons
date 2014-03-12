@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>D1865DF3-321D-43E9-BEA2-324013DA49F9</string>
+	<key>IDESourceControlProjectName</key>
+	<string>StgBeacons</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>AF372288-9983-45FE-99CE-292999984FCE</key>
+		<string>ssh://github.com/n8armstrong/stgbeacons.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>StgBeacons.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>AF372288-9983-45FE-99CE-292999984FCE</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/n8armstrong/stgbeacons.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>AF372288-9983-45FE-99CE-292999984FCE</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>AF372288-9983-45FE-99CE-292999984FCE</string>
+			<key>IDESourceControlWCCName</key>
+			<string>StgBeacons</string>
+		</dict>
+	</array>
+</dict>
+</plist>

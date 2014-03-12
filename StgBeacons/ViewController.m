@@ -10,7 +10,7 @@
 
 #import "ViewController.h"
 
-NSString * const kBEACON_UUID = @"96399003-D230-4452-81FD-6FAB495BA2AA";
+NSString * const kBEACON_UUID = @"6A484D3E-708F-4416-9BB9-0448CD02BA9C";
 
 @interface ViewController () <CLLocationManagerDelegate>
 
@@ -34,9 +34,22 @@ NSString * const kBEACON_UUID = @"96399003-D230-4452-81FD-6FAB495BA2AA";
     region.notifyEntryStateOnDisplay = YES;
 
     [self.locationManager startRangingBeaconsInRegion:region];
+
+    // later
+    [self.locationManager requestStateForRegion:region];
 }
 
 #pragma mark - CLLocationManagerDelegate
+
+// later
+- (void)locationManager:(CLLocationManager *)manager didDetermineState:(CLRegionState)state forRegion:(CLRegion *)region
+{
+    if (state == CLRegionStateInside)
+    {
+        CLBeaconRegion *beaconRegion = (CLBeaconRegion *)region;
+        [self.locationManager startRangingBeaconsInRegion:beaconRegion];
+    }
+}
 
 - (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region
 {
@@ -73,6 +86,31 @@ NSString * const kBEACON_UUID = @"96399003-D230-4452-81FD-6FAB495BA2AA";
     }
 }
 
+- (void)setColorForProximity:(CLProximity)proximity
+{
+    switch (proximity)
+    {
+        case CLProximityUnknown:
+            self.view.backgroundColor = [UIColor whiteColor];
+            break;
+
+        case CLProximityFar:
+            self.view.backgroundColor = [UIColor yellowColor];
+            break;
+
+        case CLProximityNear:
+            self.view.backgroundColor = [UIColor orangeColor];
+            break;
+
+        case CLProximityImmediate:
+            self.view.backgroundColor = [UIColor redColor];
+            break;
+
+        default:
+            break;
+    }
+}
+
 - (void)locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region
 {
     for (CLBeacon *beacon in beacons)
@@ -80,6 +118,7 @@ NSString * const kBEACON_UUID = @"96399003-D230-4452-81FD-6FAB495BA2AA";
         NSLog(@"Ranging beacon: %@", beacon.proximityUUID);
         NSLog(@"%@ - %@", beacon.major, beacon.minor);
         NSLog(@"Proximity: %@", [self stringForProximity:beacon.proximity]);
+        [self setColorForProximity:beacon.proximity];
     }
 }
 
