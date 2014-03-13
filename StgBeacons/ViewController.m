@@ -33,7 +33,7 @@ NSString * const kBEACON_UUID = @"6A484D3E-708F-4416-9BB9-0448CD02BA9C";
     region.notifyOnExit = YES;
     region.notifyEntryStateOnDisplay = YES;
 
-    [self.locationManager startRangingBeaconsInRegion:region];
+    [self.locationManager startMonitoringForRegion:region];
 
     // later
     [self.locationManager requestStateForRegion:region];
